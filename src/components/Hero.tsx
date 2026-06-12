@@ -37,17 +37,17 @@ export default function Hero() {
         <div className="terminal-wrapper">
   <Terminal className="!bg-white !border-gray-200 !text-gray-800 shadow-lg">
     <TypingAnimation className="!text-gray-800">
-      pnpm dlx shadcn@latest init
+      {"> initialize_portfolio.exe"}
     </TypingAnimation>
     <AnimatedSpan className="!text-blue-500">
-      Documents  Downloads  Pictures
+      Loading modules...
     </AnimatedSpan>
     <TypingAnimation className="!text-gray-800">
-      $ cd Documents
+      {"> render_personality"}
     </TypingAnimation>
-    <TypingAnimation className="!text-gray-800">$ pwd</TypingAnimation>
+      <AnimatedSpan> {"> rendering..."}</AnimatedSpan>
     <AnimatedSpan className="!text-blue-500">
-      /home/user/Documents
+      [████████████████████] 100%
     </AnimatedSpan>
   </Terminal>
 </div>
