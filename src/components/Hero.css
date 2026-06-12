@@ -1,0 +1,49 @@
+*{
+    /* margin: 0;
+    padding: 0; */
+    box-sizing: border-box;
+}
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4%;
+  background-color: #2f3a55;
+}
+
+.hero-left {
+  flex: 1;
+}
+
+.hero-left h1 {
+  font-family: 'Anton', sans-serif;
+  color:#d5b893;
+  font-size: 6rem;
+  margin: 0;
+  font-weight: 700;
+}
+
+.hero-left p {
+  font-family: "Parkinsans", sans-serif;
+  font-size: 1.4rem;
+  color: #666;
+}
+
+.hero-right {
+  flex: 1;
+}
+
+.hero-right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.terminal-wrapper {
+  width: 480px;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+}
