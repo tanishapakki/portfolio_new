@@ -145,7 +145,7 @@ const spansRef = useRef<(HTMLSpanElement | null)[]>([]);
 
       if (titleRef.current) {
         const titleRect = titleRef.current.getBoundingClientRect();
-        const maxDist = titleRect.width / 2;
+        const maxDist = titleRect.width / 4;
 
         spansRef.current.forEach(span => {
           if (!span) return;

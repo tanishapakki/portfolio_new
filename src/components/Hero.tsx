@@ -17,29 +17,43 @@ const [showLoopVideo, setShowLoopVideo] = useState(false);
 }, []);
 
   return (
-    <section className="hero">
+    <div>
       <NoiseTexture noiseOpacity={1} />
+    <section className="hero">
       <div className="hero-left">
+        <div className="hero-greeting">
+          <p className="font-space-grotesk text-[1rem] text-[#bba47b] opacity-80">
+            Hi, I'm
+          </p>
+        </div>
+        <div className="hero-name">
         <TextPressure
           text="TANISHA"
           fontFamily="Anton"
-          textColor="#d5b893"
+          textColor="#98824c"
           flex={true}
           weight={true}
-          width={true}
+          width={false}
           italic={false}
-          minFontSize={40}
+          minFontSize={30}
         />
         <TextPressure
           text="PAKKI"
           fontFamily="Anton"
-          textColor="#d5b893"
+          textColor="#98824c"
           flex={true}
           weight={true}
-          width={true}
+          width={false}
           italic={false}
-          minFontSize={40}
+          minFontSize={30}
         />
+        </div>
+        <p className="font-anton text-[3rem] text-[#bba47b] opacity-60">
+          AI-ML & <br /> FULL-STACK DEVELOPER
+        </p>
+        <p className="font-space-grotesk text-[1rem] text-[#bba47b] opacity-80">
+          Building intelligent systems, mobile apps, web applications and developer tools.
+        </p>
       </div>
 
       <div className="hero-right">
@@ -110,7 +124,7 @@ const [showLoopVideo, setShowLoopVideo] = useState(false);
         filter: "blur(0px)",
       }}
       transition={{
-        duration: 1,
+        duration: 0.8,
         ease: [0.22, 1, 0.36, 1],
       }}
     >
@@ -144,5 +158,6 @@ const [showLoopVideo, setShowLoopVideo] = useState(false);
 
       </div>
     </section>
+    </div>
   );
 }
