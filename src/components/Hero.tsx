@@ -4,31 +4,113 @@ import TextPressure from './TextPressure.tsx';
 import { AnimatedSpan, Terminal, TypingAnimation } from "./ui/teminal.tsx";
 import { motion, AnimatePresence } from "framer-motion";
 import { NoiseTexture } from "./ui/NoiseTexture.tsx";
+import tanishaImg from "../assets/tanisha.png";
+import BubbleMenu from './ui/BubbleMenu';
 
+const items = [
+  {
+    label: 'home',
+    href: '#',
+    ariaLabel: 'Home',
+    rotation: -8,
+    hoverStyles: { bgColor: '#3b82f6', textColor: '#ffffff' }
+  },
+  {
+    label: 'about',
+    href: '#',
+    ariaLabel: 'About',
+    rotation: 8,
+    hoverStyles: { bgColor: '#10b981', textColor: '#ffffff' }
+  },
+  {
+    label: 'projects',
+    href: '#',
+    ariaLabel: 'Projects',
+    rotation: 8,
+    hoverStyles: { bgColor: '#f59e0b', textColor: '#ffffff' }
+  },
+  {
+    label: 'blog',
+    href: '#',
+    ariaLabel: 'Blog',
+    rotation: 8,
+    hoverStyles: { bgColor: '#ef4444', textColor: '#ffffff' }
+  },
+  {
+    label: 'contact',
+    href: '#',
+    ariaLabel: 'Contact',
+    rotation: -8,
+    hoverStyles: { bgColor: '#8b5cf6', textColor: '#ffffff' }
+  }
+];
 export default function Hero() { 
-const [showIntroVideo, setShowIntroVideo] = useState(false);
-const [showLoopVideo, setShowLoopVideo] = useState(false);
- useEffect(() => {
-  const timer = setTimeout(() => {
-    setShowIntroVideo(true);
-  }, 4000);
+    const [phase, setPhase] = useState<
+    "terminal" |
+    "loading" |
+    "glitch" |
+    "revealing" |
+    "resolved"
+  >("terminal");
 
-  return () => clearTimeout(timer);
-}, []);
+  useEffect(() => {
+    const timers = [
+      setTimeout(() => setPhase("loading"), 3500),
+      setTimeout(() => setPhase("glitch"), 4200),
+      setTimeout(() => setPhase("revealing"), 4700),
+      setTimeout(() => setPhase("resolved"), 6500),
+    ];
+
+    return () => timers.forEach(clearTimeout);
+  }, []);
 
   return (
     <div>
-      <NoiseTexture noiseOpacity={1} />
+      
+       <BubbleMenu
+        logo={null}
+        items={items}
+        onMenuClick={() => {}}
+        className=""
+        style={{}}
+        menuAriaLabel="Toggle navigation"
+        menuBg="#ffffff"
+        menuContentColor="#111111"
+        useFixedPosition={false}
+        animationEase="bounce.out"
+        animationDuration={0.85}
+        staggerDelay={0.12}
+      />
+
+      <motion.div
+  className={phase === "glitch" ? "hero-glitching" : ""}
+></motion.div>
     <section className="hero">
+
+      <AnimatePresence>
+  {phase === "glitch" && (
+    <motion.div
+      className="screen-glitch"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    />
+  )}
+</AnimatePresence>
+
+       {phase === "glitch" ||
+ phase === "revealing" ? (
+  <div className="scanlines" />
+) : null}
       <div className="hero-left">
         <div className="hero-greeting">
-          <p className="font-space-grotesk text-[1rem] text-[#bba47b] opacity-80">
-            Hi, I'm
+          <p className="font-anton text-[1.5rem] text-[#bba47b] opacity-80 mb-2">
+            Hi, I'm an 
           </p>
         </div>
         <div className="hero-name">
         <TextPressure
-          text="TANISHA"
+          text="AI-ML ENGINEER"
           fontFamily="Anton"
           textColor="#98824c"
           flex={true}
@@ -38,7 +120,7 @@ const [showLoopVideo, setShowLoopVideo] = useState(false);
           minFontSize={30}
         />
         <TextPressure
-          text="PAKKI"
+          text="FULL-STACK DEVELOPER"
           fontFamily="Anton"
           textColor="#98824c"
           flex={true}
@@ -48,113 +130,75 @@ const [showLoopVideo, setShowLoopVideo] = useState(false);
           minFontSize={30}
         />
         </div>
-        <p className="font-anton text-[3rem] text-[#bba47b] opacity-60">
-          AI-ML & <br /> FULL-STACK DEVELOPER
-        </p>
         <p className="font-space-grotesk text-[1rem] text-[#bba47b] opacity-80">
-          Building intelligent systems, mobile apps, web applications and developer tools.
+          I build intelligent systems, mobile apps, web applications and developer tools.
         </p>
       </div>
 
       <div className="hero-right">
+        
 
-        {/* Terminal — centered absolutely, fades out */}
         <AnimatePresence>
-          {!showIntroVideo && (
-            <motion.div
-  className="terminal-center"
-  initial={{ opacity: 0, y: 10 }}
-  animate={{
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-    },
-  }}
-  exit={{
-    opacity: 0,
-    y: -20,
-    filter: "blur(8px)",
-    scale: 0.97,
-    transition: {
-      duration: 0.9,
-      ease: [0.4, 0, 0.2, 1],
-    },
-  }}
-> 
-              <Terminal className="!bg-white !border-gray-200 !text-gray-800 shadow-lg w-100">
-                <TypingAnimation className="!text-gray-800">
-                  {"> initialize_portfolio.exe"}
-                </TypingAnimation>
-                <AnimatedSpan className="!text-blue-500">
-                  Loading modules...
-                </AnimatedSpan>
-                <TypingAnimation className="!text-gray-800">
-                  {"> render_personality"}
-                </TypingAnimation>
-                <AnimatedSpan>{"> rendering..."}</AnimatedSpan>
-                <AnimatedSpan className="!text-blue-500">
-                  [████████████████████] 100%
-                </AnimatedSpan>
-              </Terminal>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Image — anchored to bottom, rises in */}
-        <AnimatePresence>
-  {showIntroVideo && !showLoopVideo && (
-    <motion.video
-      className="hero-video"
-      autoPlay
-      muted
-      playsInline
-      onEnded={() => setShowLoopVideo(true)}
-      initial={{
+  {phase !== "revealing" &&
+phase !== "resolved" && (
+    <motion.div
+      className="terminal-center"
+      exit={{
         opacity: 0,
-        y: 40,
-        scale: 0.97,
-        filter: "blur(6px)",
+        scale: .97,
+        filter: "blur(12px)"
+      }}
+    >
+      <Terminal>
+        <TypingAnimation>
+          {"> initialize_portfolio.exe"}
+        </TypingAnimation>
+
+        <AnimatedSpan>
+          Loading modules...
+        </AnimatedSpan>
+
+        <TypingAnimation>
+          {"> render_personality"}
+        </TypingAnimation>
+
+        {phase === "loading" && (
+          <AnimatedSpan>
+            {"> loading image..."}
+          </AnimatedSpan>
+        )}
+      </Terminal>
+    </motion.div>
+  )}
+</AnimatePresence>
+
+
+         <AnimatePresence>
+  {(phase === "revealing" || phase === "resolved") && (
+    <motion.div
+      className="crt-reveal"
+      initial={{
+        clipPath: "inset(100% 0 0 0)",
+        filter: "blur(20px) brightness(.3) contrast(2)"
       }}
       animate={{
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        filter: "blur(0px)",
+        clipPath: "inset(0% 0 0 0)",
+        filter: "blur(0px) brightness(1) contrast(1)"
       }}
       transition={{
-        duration: 0.8,
-        ease: [0.22, 1, 0.36, 1],
+        duration: 1.5
       }}
     >
-      <source
-        src="../src/assets/hero-paper-video.webm"
-        type="video/webm"
+      <img
+      src={tanishaImg}         
+      alt="Tanisha"
+        className="hero-image"
       />
-    </motion.video>
+    </motion.div>
   )}
 </AnimatePresence>
 
-<AnimatePresence>
-  {showLoopVideo && (
-    <motion.video
-      className="hero-video"
-      autoPlay
-      muted
-      loop
-      playsInline
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
-      <source
-        src="../src/assets/hero-paper-gif.webm"
-        type="video/webm"
-      />
-    </motion.video>
-  )}
-</AnimatePresence>
+
 
       </div>
     </section>

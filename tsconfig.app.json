@@ -10,6 +10,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+     "allowJs": true,
     /* Bundler mode */
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
