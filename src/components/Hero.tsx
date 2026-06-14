@@ -82,10 +82,9 @@ export default function Hero() {
         staggerDelay={0.12}
       />
 
-      <motion.div
-  className={phase === "glitch" ? "hero-glitching" : ""}
-></motion.div>
-    <section className="hero">
+    <section  className={`hero ${
+    phase === "glitch" ? "hero-glitching" : ""
+  }`}>
 
       <AnimatePresence>
   {phase === "glitch" && (
@@ -96,6 +95,7 @@ export default function Hero() {
       exit={{ opacity: 0 }}
     />
   )}
+  
 </AnimatePresence>
 
        {phase === "glitch" ||
@@ -139,16 +139,19 @@ export default function Hero() {
         
 
         <AnimatePresence>
-  {phase !== "revealing" &&
+  {
 phase !== "resolved" && (
     <motion.div
-      className="terminal-center"
-      exit={{
-        opacity: 0,
-        scale: .97,
-        filter: "blur(12px)"
-      }}
-    >
+  className="terminal-center"
+  animate={{
+    opacity: phase === "revealing" ? 0 : 1,
+    scale: phase === "revealing" ? 0.97 : 1,
+    filter:
+      phase === "revealing"
+        ? "blur(12px)"
+        : "blur(0px)"
+  }}
+>
       <Terminal>
         <TypingAnimation>
           {"> initialize_portfolio.exe"}
@@ -194,12 +197,10 @@ phase !== "resolved" && (
       alt="Tanisha"
         className="hero-image"
       />
+      
     </motion.div>
   )}
 </AnimatePresence>
-
-
-
       </div>
     </section>
     </div>
