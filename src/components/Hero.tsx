@@ -45,7 +45,7 @@ const items = [
   }
 ];
 export default function Hero() { 
-    const [phase, setPhase] = useState<
+  const [phase, setPhase] = useState<
     "terminal" |
     "loading" |
     "glitch" |
@@ -65,8 +65,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <div>
-      
+    <>
        <BubbleMenu
         logo={null}
         items={items}
@@ -102,42 +101,29 @@ export default function Hero() {
  phase === "revealing" ? (
   <div className="scanlines" />
 ) : null}
-      <div className="hero-left">
-        <div className="hero-greeting">
-          <p className="font-anton text-[1.5rem] text-[#bba47b] opacity-80 mb-2">
-            Hi, I'm an 
-          </p>
-        </div>
-        <div className="hero-name">
+
+  <div className="hero-name">
         <TextPressure
-          text="AI-ML ENGINEER"
+          text="TANISHA"
           fontFamily="Anton"
           textColor="#98824c"
           flex={true}
           weight={true}
           width={false}
           italic={false}
-          minFontSize={30}
+          minFontSize={400}
         />
-        <TextPressure
-          text="FULL-STACK DEVELOPER"
-          fontFamily="Anton"
-          textColor="#98824c"
-          flex={true}
-          weight={true}
-          width={false}
-          italic={false}
-          minFontSize={30}
-        />
-        </div>
-        <p className="font-space-grotesk text-[1rem] text-[#bba47b] opacity-80">
-          I build intelligent systems, mobile apps, web applications and developer tools.
-        </p>
       </div>
 
-      <div className="hero-right">
-        
+  <div className="left-caption">
+    AI/ML ENGINEER
+  </div>
 
+  <div className="right-caption">
+    FULL STACK DEVELOPER
+  </div>
+
+  <div className="hero-center">
         <AnimatePresence>
   {
 phase !== "resolved" && (
@@ -201,8 +187,17 @@ phase !== "resolved" && (
     </motion.div>
   )}
 </AnimatePresence>
-      </div>
+  </div>
+{phase === "resolved" && (
+  <motion.p
+    className="hero-tagline"
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+  >
+    Building intelligent systems, web applications and developer tools.
+  </motion.p>
+)}
     </section>
-    </div>
+    </>
   );
 }

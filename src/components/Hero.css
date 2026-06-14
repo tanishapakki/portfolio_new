@@ -3,25 +3,65 @@
     box-sizing: border-box;
 }
 .hero {
-  min-height: 400px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 4%;
   background-color: #380702;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.left-caption {
+  position: absolute;
+
+  left: 5%;
+  top: 60%;
+
+  width: 250px;
+
+  color: #d6c29b;
+
+  font-size: 1.1rem;
+
+  text-transform: uppercase;
+
+  z-index: 5;
 }
 
-.hero-left {
-  max-height: 500px;
-  width: 700px;
+.right-caption {
+  position: absolute;
+
+  right: 5%;
+  top: 60%;
+
+  width: 250px;
+
+  text-align: right;
+
+  color: #d6c29b;
+
+  font-size: 1.1rem;
+
+  text-transform: uppercase;
+
+  z-index: 5;
 }
 .hero-name {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
   justify-content: stretch;
-  height: 250px;   
+  position: absolute;
+
+  top: 5%;
+  left: 50%;
+
+  transform: translateX(-50%);
+  font-size: clamp(7rem, 18vw, 16rem);
+
+  line-height: .9;
+
+  z-index: 1;
+
+  pointer-events: none;
 }
 
 .hero-right {
@@ -64,25 +104,44 @@
   100% { opacity: .3; }
 }
 
+.hero-tagline {
+  position: absolute;
+
+  bottom: 5%;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: #d6c29b;
+
+  text-align: center;
+
+  width: 600px;
+
+  z-index: 5;
+}
+
 .terminal-center {
   position: absolute;
-  top: 40%;
-  left: 30%;
   transform: translate(-50%, -50%);
   z-index: 2;
-  max-width: 480px;
+  /* max-width: 480px; */
   padding: 0 1rem;
   transition:
   opacity .8s,
   filter .8s,
   border-color .8s;
   border-color: transparent;
+  top: 30%;
+  left: 40%;
+  max-width: 400px;
+  z-index: 5;
 }
 
 .hero-image {
   /* display: block; */
-  width: 500px;
-  height: 500px;
+  height: 75vh;
+  width: auto;
   max-height: 100%;
   width: auto;
   object-fit: contain;
@@ -136,14 +195,17 @@
 }
 .crt-reveal {
   position: absolute;
-  bottom: 0;
-  right: 0;
 
   display: flex;
   align-items: flex-end;
   justify-content: center;
 
-  z-index: 2;
+  bottom: 0;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 4;
 }
 .scan-band {
   position: absolute;
