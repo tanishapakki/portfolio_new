@@ -395,7 +395,7 @@ export default function Experience() {
                 {/* Title */}
                 <div className="absolute top-6 left-6 z-10">
 
-                    <h2 className="font-anton text-white text-6xl md:text-[clamp(4rem,8vw,7rem)] leading-none mt-1">
+                    <h2 className="font-anton text-white text-6xl md:text-[clamp(4rem,8vw,7rem)] leading-none mt-1 z-0">
                         EXPERIENCE
                     </h2>
 

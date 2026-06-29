@@ -1,66 +1,73 @@
 import monitor from "../assets/abt-comp.jpg";
 import "./About.css";
-import {EncryptedText} from "@/components/ui/encrypted-text.tsx";
-import {useRef} from "react";
+import { EncryptedText } from "@/components/ui/encrypted-text.tsx";
+import { useRef } from "react";
+import { ABOUT } from "@/data/about";
+
 interface AboutScreenProps {
     screenReady?: boolean;
 }
-export default function AboutScreen({
-                                        screenReady=false,
-                                    }: AboutScreenProps) {
+
+export default function AboutScreen({ screenReady = false }: AboutScreenProps) {
     const ref = useRef<HTMLDivElement>(null);
+
     return (
         <div ref={ref} className="about-screen p-5">
-
             <div className="about-container">
+                {/* ── Left: Bio ── */}
                 <div className="about-body">
-                    <div className="about-heading">HI,</div>
-                    <div className="about-text"><p>
-                        I started with AI because I loved solving problems.<br/>
-                            Then, somewhere between training models, debugging
-                            APIs at 2 am, building and shipping products...
-                        <br/>
-                            I don't just enjoy writing code.<br/>
-                        <br/>
-                            Today, I work at the intersection of AI,
-                            software engineering and design.
-                        </p></div>
-                </div>
-
-                <div className="monitor-wrapper">
-                    <img src={monitor} className="monitor" />
-
-                    <div className="monitor-screen">
-                                <div className="text-xl">&ensp; &emsp; TECHSTACK.exe</div>
-
-                                <br />
-
-                                <div>[AI & ML]</div>
-                                <div>└─ {screenReady && (<EncryptedText revealDelayMs={50} text="NLP, Computer Vision" />)}</div>
-
-                                <br />
-
-                                <div>[Frontend]</div>
-                                <div>├─ {screenReady && (<EncryptedText revealDelayMs={100} text="React" />)}</div>
-                                <div>├─ {screenReady && (<EncryptedText revealDelayMs={150} text="Next.js" />)}</div>
-                                <div>├─ {screenReady && (<EncryptedText revealDelayMs={150} text="TypeScript" />)}</div>
-                                <div>└─ {screenReady && (<EncryptedText revealDelayMs={200} text="JavaScript" />)}</div>
-
-                                <br />
-
-                                <div>[Backend]</div>
-                                <div>├─ {screenReady && (<EncryptedText text="Node.js" />)}</div>
-                                <div>└─ {screenReady && (<EncryptedText text="REST APIs" />)}</div>
-
-                                <br />
-
-                                <div>A:\&gt; _</div>
-                        </div>
+                    <div className="about-heading">{ABOUT.greeting}</div>
+                    <div className="about-text">
+                        <p>
+                            {ABOUT.bio.map((line, i) => (
+                                <span key={i}>
+                  {line}
+                                    {i < ABOUT.bio.length - 1 && <br />}
+                </span>
+                            ))}
+                        </p>
                     </div>
                 </div>
 
+                {/* ── Right: Tech-stack terminal ── */}
+                <div className="monitor-wrapper">
+                    <img src={monitor} className="monitor" alt="retro monitor" />
+
+                    <div className="monitor-screen">
+                        <div className="text-xl">&ensp;&emsp;TECHSTACK.exe</div>
+                        <br />
+
+                        {(
+                            Object.entries(ABOUT.techStack) as [
+                                string,
+                                readonly string[]
+                            ][]
+                        ).map(([category, items], catIdx) => (
+                            <div key={category}>
+                                <div>[{category}]</div>
+                                {items.map((item, i) => {
+                                    const isLast = i === items.length - 1;
+                                    const delayMs = (catIdx * items.length + i + 1) * 50;
+                                    return (
+                                        <div key={item}>
+                                            {isLast ? "└─ " : "├─ "}
+                                            {screenReady && (
+                                                <EncryptedText
+                                                    revealDelayMs={delayMs}
+                                                    text={item}
+                                                />
+                                            )}
+                                        </div>
+                                    );
+                                })}
+                                <br />
+                            </div>
+                        ))}
+
+                        <div>A:\&gt; _</div>
+                    </div>
+                </div>
             </div>
-
-
+        </div>
     );
 }

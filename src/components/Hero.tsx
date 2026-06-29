@@ -1,7 +1,7 @@
 import {useState } from "react";
 import './Hero.css'
 import TextPressure from './ui/TextPressure.tsx';
-import { Terminal }from "./ui/teminal.tsx";
+import { Terminal }from "./ui/terminal.tsx";
 import { motion, AnimatePresence } from "framer-motion";
 import tanishaImg from "../assets/tanisha.png";
 

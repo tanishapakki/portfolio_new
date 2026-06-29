@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
 
-/**
- * Observes elements with a `data-color` attribute and returns
- * the color of whichever section is most visible in the viewport.
- *
- * Using threshold: 0.15 prevents jittery changes at the very edge
- * of sections (vs the original threshold: 0 which fired too eagerly).
- */
+
 export function useScrollColor(defaultColor = "#F5EFE6"): string {
   const [bgColor, setBgColor] = useState(defaultColor);
 

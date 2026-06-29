@@ -94,7 +94,7 @@
 
 .tv {
     width: 170px;
-    bottom: 35px;
+    top: 480px;
     left: 10px;
 }
 
@@ -148,7 +148,7 @@
 
 .flowers {
     width: 100px;
-    bottom: 100px;
+    top: 450px;
     right: 170px;
 }
 
@@ -160,25 +160,25 @@
 
 .cap {
     width: 110px;
-    bottom: 60px;
+    top: 550px;
     left: 300px;
 }
 
 .cat {
     width: 100px;
-    bottom: 20px;
+    top: 530px;
     right: 100px;
 }
 
 .coffee {
     width: 90px;
-    bottom: 100px;
-    right: 10px;
+    top: 500px;
+    right: 20px;
 }
 
 .coffee-beans{
     width:60px;
-    bottom:80px;
+    top:550px;
     right:10px;
 }
 
@@ -191,13 +191,13 @@
 }
 .dog{
     width:150px;
-    bottom:150px;
+    top:440px;
     left:20px;
 }
 
 .popcorn{
     width:75px;
-    bottom:15px;
+    top:550px;
     left:170px;
 }
 

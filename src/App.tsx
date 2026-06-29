@@ -17,7 +17,7 @@ export default function App() {
         items={NAV_ITEMS}
         logo={undefined}
         className={undefined}
-        style={undefined}
+        style={{position: 'sticky'}}
         onMenuClick={undefined}
       />
 
@@ -36,7 +36,7 @@ export default function App() {
         <About />
       </section>
 
-      <section id="projects" data-color="#2F2A35" className="min-h-screen">
+      <section id="projects" data-color="#071742" className="min-h-screen">
         <Projects />
       </section>
 

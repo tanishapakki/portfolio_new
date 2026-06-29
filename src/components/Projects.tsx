@@ -20,10 +20,10 @@ function GithubIcon() {
 }
 
 const TAG_COLORS = {
-    "AI/ML": "text-[#ebdb89]",
-    "Full Stack": "text-[#e8c778]",
-    "Mobile": "text-[#d7b96d]",
-    "Open Source": "text-[#f0df98]",
+    "AI/ML": "text-[#1A4D94]",
+    "Full Stack": "text-[#072B6B]",
+    "Mobile": "text-[#357CB6]",
+    "Open Source": "text-[#AB6D48]",
 };
 
 interface ExpandedCardProps {
@@ -40,9 +40,8 @@ function ExpandedCard({ project, onClose }: ExpandedCardProps) {
     >
       <div
           style={{
-              background:
-                  "linear-gradient(180deg,#4d3043,#35283b)",
-              border:"1px solid rgba(235,219,137,.15)",
+              background:"#072B6B",
+              border:"1px solid rgba(213,162,94,.25)",
               animation: "fadeScaleIn 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards"
           }}
         className="relative w-full max-w-2xl rounded-3xl border border-white/10  p-10 shadow-2xl overflow-y-auto max-h-[85vh]"
@@ -79,9 +78,9 @@ function ExpandedCard({ project, onClose }: ExpandedCardProps) {
             <span
               key={t}
               style={{
-                  background:"#2b2435",
-                  border:"1px solid rgba(235,219,137,.12)",
-                  color:"#ebdb89",
+                  background:"#2B2435",
+                  color:"#F5F1EB",
+                  border:"none",
               }}
               className="text-xs font-mono font-semibold  border  text-zinc-300 rounded-full px-3 py-1"
             >
@@ -98,9 +97,8 @@ function ExpandedCard({ project, onClose }: ExpandedCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                  background:"#9d5b67",
-                  color:"#f5f1eb",
-
+                  background:"#1A4D94",
+                  color:"#F8F4EE",
               }}
               className="flex items-center gap-2 rounded-full  px-5 py-2 text-white text-sm hover:bg-background:#b56f7d;
 transform:translateY(-2px) transition-colors"
@@ -154,7 +152,7 @@ export default function Projects() {
   return (
     <section className="relative min-h-screen bg-transparent py-24 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-anton text-[clamp(4rem,8vw,7rem)] font-black text-[#ebdb89] leading-[0.9] mb-2 tracking-[-2px]">
+        <h2 className="font-anton text-[clamp(4rem,8vw,7rem)] font-black text-[#D5A25E] leading-[0.9] mb-2 tracking-[-2px]">
           PROJECTS
         </h2>
         <p className="text-[rgba(245,241,235,.72)] text-sm uppercase tracking-widest mb-16">
@@ -184,28 +182,28 @@ export default function Projects() {
                   aria-label={`View ${project.title} details`}
                   onKeyDown={(e) => e.key === "Enter" && openCard(index)}
                   style={{
-                      background:
-                          "linear-gradient(160deg,#4d3043 0%,#3f2b3d 100%)",
-                      border: "1px solid rgba(235,219,137,.15)",
+                      background:"#D5A25E",
+                      color:"#071742",
+                      border: "2px solid #2B2435",
                       height: 280,
                   }}
-                  className="group relative w-full rounded-3xl border border-white/10  overflow-hidden cursor-pointer transition-all duration-300 hover:border-white/25 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
+                  className="group relative w-full rounded-3xl border border-white/10  overflow-hidden cursor-pointer transition-all duration-300 hover:border-white/25  hover:-translate-y-2 hover:shadow-[0_18px_40px_rgba(26,77,148,.08)] transition-all duration-300  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                 >
-                  <div className="absolute inset-0 " style={{
-                      background:
-                          "linear-gradient(140deg, rgba(235,219,137,.08), transparent 45%)",
-                  }}/>
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
+                    <div
+                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        style={{
+                            background: "rgba(43,36,53,.06)",
+                        }}
+                    />
                   <div className="relative h-full p-8 flex flex-col justify-between">
                     <div>
                       <span className={`text-xs uppercase tracking-widest font-semibold ${TAG_COLORS[project.tag]}`}>
                         {project.tag}
                       </span>
-                      <h3 className="mt-3 text-2xl font-bold text-white leading-tight">
+                      <h3 className="mt-3 text-2xl font-black text-[#071742] leading-tight">
                         {project.title}
                       </h3>
-                      <p className="mt-2 text-sm text-zinc-400 line-clamp-2 leading-relaxed">
+                      <p className="mt-2 text-sm text-[#072B6B] line-clamp-2 leading-relaxed">
                         {project.description}
                       </p>
                     </div>
@@ -216,9 +214,9 @@ export default function Projects() {
                           <span
                             key={t}
                             style={{
-                                background:"#2b2435",
-                                border:"1px solid rgba(235,219,137,.12)",
-                                color:"#ebdb89",
+                                background: "#071742",
+                                color: "#D5A25E",
+                                border: "1px solid rgba(213,162,94,.25)"
                             }}
                             className="text-[10px] font-mono font-semibold  border rounded-full px-2.5 py-0.5"
                           >
@@ -231,7 +229,7 @@ export default function Projects() {
                           </span>
                         )}
                       </div>
-                      <span className="text-zinc-500 text-xs group-hover:text-white transition-colors">
+                      <span className="text-[#4D3043] text-xs font-semibold group-hover:text-[#2B2435] transition-colors">
                         View →
                       </span>
                     </div>

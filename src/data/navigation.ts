@@ -18,7 +18,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "about",
     href: "#about",
     ariaLabel: "About",
-    rotation: 8,
+    rotation: 5,
     hoverStyles: { bgColor: "#d4b06a", textColor: "#9e2a2b" },
   },
   {
