@@ -3,6 +3,10 @@ import emailjs from "@emailjs/browser";
 import { CONTACT } from "@/data/contact";
 import "../contact.css";
 
+const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
 type Status = "idle" | "sending" | "success" | "error";
 
 export default function ContactForm() {
@@ -17,11 +21,11 @@ export default function ContactForm() {
 
         emailjs
             .sendForm(
-                "service_ezmskcc",
-                "template_73ro3kp",
-                form.current,
-                "8RyfTnegdIQlZDLJi"
-            )
+            SERVICE_ID,
+            TEMPLATE_ID,
+            form.current,
+            PUBLIC_KEY
+        )
             .then(() => {
                 setStatus("success");
                 form.current?.reset();
