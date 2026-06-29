@@ -11,14 +11,14 @@ import pizza from "../../assets/pizza.webp";
 import shoes from "../../assets/shoes.png";
 import lipgloss from "../../assets/lipgloss.png";
 
-import books from "../../assets/books.png";
+import books from "../../assets/books.webp";
 import gramophone from "../../assets/gramophone.png";
 import lipliner from "../../assets/lipliner.png";
 import clapper from "../../assets/clap.png";
 import flowers from "../../assets/flowers.png";
 import magazines from "../../assets/magazine.png";
-import cap from "../../assets/cap.png";
-import cat from "../../assets/cat.png";
+import cap from "../../assets/cap.webp";
+import cat from "../../assets/cat.webp";
 import coffee from "../../assets/coffee.png";
 
 import dog from "../../assets/dog.png";
