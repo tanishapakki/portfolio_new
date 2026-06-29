@@ -1,0 +1,23 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+  background-color: #333;
+}
+.page-blurred {
+ filter: blur(6px) brightness(0.35);
+  transition: all .35s ease;
+
+}
+
+.page-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    transition: background-color 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+
+    pointer-events: none;
+}

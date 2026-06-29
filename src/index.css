@@ -1,0 +1,44 @@
+/* Import Google Fonts — combined into one request for performance */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-anton: "Anton", sans-serif;
+  --font-space-grotesk: "Space Grotesk", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+@font-face {
+  font-family: 'Providence';
+  /* format('truetype') is correct — 'ttf' is not a valid format hint */
+  src: url('./assets/fonts/Providence Sans Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Global resets */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-space-grotesk), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Focus visible — accessibility */
+:focus-visible {
+  outline: 2px solid rgba(212, 176, 106, 0.7);
+  outline-offset: 3px;
+}

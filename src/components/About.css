@@ -1,0 +1,373 @@
+.about-page {
+    position: relative;
+    min-height: 250vh;
+    /*overflow: visible;*/
+    overflow:hidden;
+    margin-top: 20%;
+}
+.about-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background-image: url("../assets/paper.webp");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* Fade top & bottom */
+    -webkit-mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%
+    );
+
+    mask-image: linear-gradient(
+            to bottom,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%
+    );
+    z-index: 1;
+    pointer-events: none;
+
+    /* Initial hidden state */
+    opacity: 0;
+    filter: blur(25px);
+    transform: scale(1.08);
+
+    transition:
+            opacity 0.9s ease,
+            filter 1.2s ease,
+            transform 1.2s ease;
+}
+
+/* Page enters */
+.about-page.active::before {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+}
+
+/* Page leaves */
+.about-page.exit::before {
+    opacity: 0;
+    filter: blur(25px);
+    transform: scale(1.08);
+}
+.sticker {
+    position: absolute;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+    z-index:2;
+}
+
+/* LEFT */
+
+.camera {
+    width: 90px;
+    top: 20px;
+    left: 30px;
+}
+
+.palette {
+    width: 90px;
+    top: 20px;
+    left: 20rem;
+    rotate: -25deg;
+}
+
+.yarn {
+    width: 85px;
+    top: 145px;
+    left: 15px;
+}
+
+.typewriter {
+    width: 140px;
+    top: 245px;
+    left: 10px;
+}
+
+.tv {
+    width: 170px;
+    bottom: 35px;
+    left: 10px;
+}
+
+.soda {
+    width: 40px;
+    top: 350px;
+    left: 160px;
+    rotate: -25deg;
+}
+
+.pizza {
+    width: 90px;
+    top: 350px;
+    left: 190px;
+}
+
+.shoes {
+    width: 95px;
+    top: 430px;
+    left: 220px;
+}
+
+.lipgloss {
+    width: 40px;
+    top: 280px;
+    left: 340px;
+    rotate: 10deg;
+}
+
+/* RIGHT */
+
+
+.gramophone {
+    width: 150px;
+    top: 15px;
+    right: 5px;
+}
+
+.lipliner {
+    width: 80px;
+    top: 250px;
+    right: 160px;
+    rotate: -20deg;
+}
+
+.clapper {
+    width: 70px;
+    top: 180px;
+    right: 40px;
+}
+
+.flowers {
+    width: 100px;
+    bottom: 100px;
+    right: 170px;
+}
+
+.magazines {
+    width: 150px;
+    top: 280px;
+    right: 10px;
+}
+
+.cap {
+    width: 110px;
+    bottom: 60px;
+    left: 300px;
+}
+
+.cat {
+    width: 100px;
+    bottom: 20px;
+    right: 100px;
+}
+
+.coffee {
+    width: 90px;
+    bottom: 100px;
+    right: 10px;
+}
+
+.coffee-beans{
+    width:60px;
+    bottom:80px;
+    right:10px;
+}
+
+/* LEFT SIDE ADDITIONS */
+
+.bookshelf{
+    width: 150px;
+    top: 5px;
+    left: 150px;
+}
+.dog{
+    width:150px;
+    bottom:150px;
+    left:20px;
+}
+
+.popcorn{
+    width:75px;
+    bottom:15px;
+    left:170px;
+}
+
+.mascara{
+    width:100px;
+    top:300px;
+    right:200px;
+    rotate: -10deg;
+}
+
+.books{
+    width:90px;
+    top:0;
+    right:400px;
+}
+/* RIGHT SIDE ADDITIONS */
+
+.music{
+    width:300px;
+    top:-10px;
+    right:150px;
+    transform:rotate(12deg);
+}
+
+
+
+
+/* CENTER CONTENT */
+
+.about-content {
+    position:absolute;
+    z-index:2;
+    inset: 0;
+    display: flex;
+    top: 300px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10px;
+}
+
+.laptop {
+    top: 40px;
+    width: 500px;
+}
+
+.about-me {
+    position: absolute;
+    font-family:'Providence', sans-serif;
+    font-size:100px;
+    font-weight:bold;
+
+    transform:translateX(-50%);
+
+    color:#8B1E1E;
+}
+
+/*ABOUT SCREEN*/
+
+.about-screen{
+    position: absolute;
+    inset: 0;
+
+    background-color: #241136; /* purple */
+
+    /* repeated diamond */
+    background-image:  linear-gradient(rgba(36, 17, 54, 0.4), rgba(36, 17, 54, 0.4)),url("../assets/bg.png");
+
+    background-repeat: repeat;
+
+    /* controls spacing */
+    background-size: 80px 80px;
+
+    /* match screenshot */
+    opacity: 0.9;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+.about-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* IMPORTANT */
+
+    gap: 10px;
+}
+
+.about-text {
+    font-family: "IBM Plex Mono", monospace;
+    color: #f5f1eb;
+    font-size: 0.8rem;
+    line-height: 1.65;
+    max-width: 700px;
+}
+.about-text p {
+    margin-bottom: 2rem;
+}
+.about-heading {
+    font-family: "Anton", sans-serif;
+    font-size: clamp(4rem, 8vw, 7rem);
+    font-weight: 900;
+    color: #f5f1eb;
+    line-height: 0.9;
+    margin-bottom: 2rem;
+    letter-spacing: -2px;
+}
+.about-body{
+
+    max-width: 300px;
+    flex-direction: row;
+}
+
+.monitor-wrapper {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    top: 30px;
+
+}
+
+.monitor {
+    width: 340px;
+    height: 100%;}
+.monitor-screen {
+    position: absolute;
+    top: 22px;
+    left: 30px;
+
+    width: 300px;
+    height: 240px;
+
+    color: #d9ffd2;
+    font-family: "VT323", monospace;
+    font-size: 0.85rem;
+    line-height: 1.1;
+
+    overflow: hidden;
+}
+
+.monitor-screen pre {
+    margin: 0;
+    white-space: pre-wrap;
+}
+/* ── Mobile: hide stickers that overflow on small screens ── */
+@media (max-width: 768px) {
+  /* Keep only a few stickers, hide the rest */
+  .sticker:not(.camera):not(.typewriter):not(.gramophone):not(.flowers):not(.cat) {
+    display: none;
+  }
+
+  .camera { width: 55px; top: 10px; left: 10px; }
+  .typewriter { width: 80px; top: 120px; left: 5px; }
+  .gramophone { width: 85px; top: 10px; right: 5px; }
+  .flowers { width: 70px; bottom: 60px; right: 10px; }
+  .cat { width: 65px; bottom: 10px; right: 10px; }
+
+  .about-content {
+    position: relative;
+    top: auto;
+    inset: auto;
+    padding: 0 1rem;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .sticker {
+    display: none;
+  }
+}
