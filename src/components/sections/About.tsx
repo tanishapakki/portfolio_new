@@ -1,32 +1,32 @@
-import "./About.css";
+import "../About.css";
 
 
-import camera from "../assets/camera.webp";
-import palette from "../assets/pallete.png";
-import yarn from "../assets/wool.png";
-import typewriter from "../assets/typewriter.png";
-import tv from "../assets/tv.webp";
-import soda from "../assets/soda.png";
-import pizza from "../assets/pizza.webp";
-import shoes from "../assets/shoes.png";
-import lipgloss from "../assets/lipgloss.png";
+import camera from "../../assets/camera.webp";
+import palette from "../../assets/pallete.png";
+import yarn from "../../assets/wool.png";
+import typewriter from "../../assets/typewriter.png";
+import tv from "../../assets/tv.webp";
+import soda from "../../assets/soda.png";
+import pizza from "../../assets/pizza.webp";
+import shoes from "../../assets/shoes.png";
+import lipgloss from "../../assets/lipgloss.png";
 
-import books from "../assets/books.png";
-import gramophone from "../assets/gramophone.png";
-import lipliner from "../assets/lipliner.png";
-import clapper from "../assets/clap.png";
-import flowers from "../assets/flowers.png";
-import magazines from "../assets/magazine.png";
-import cap from "../assets/cap.png";
-import cat from "../assets/cat.png";
-import coffee from "../assets/coffee.png";
+import books from "../../assets/books.png";
+import gramophone from "../../assets/gramophone.png";
+import lipliner from "../../assets/lipliner.png";
+import clapper from "../../assets/clap.png";
+import flowers from "../../assets/flowers.png";
+import magazines from "../../assets/magazine.png";
+import cap from "../../assets/cap.png";
+import cat from "../../assets/cat.png";
+import coffee from "../../assets/coffee.png";
 
-import dog from "../assets/dog.png";
-import popcorn from "../assets/popcorn.png";
-import music from "../assets/music.png";
-import coffeeBeans from "../assets/coffeebeans.webp";
-import mascara from "../assets/mascara.png";
-import bookshelf from "../assets/bookshelf.png";
+import dog from "../../assets/dog.png";
+import popcorn from "../../assets/popcorn.png";
+import music from "../../assets/music.png";
+import coffeeBeans from "../../assets/coffeebeans.webp";
+import mascara from "../../assets/mascara.png";
+import bookshelf from "../../assets/bookshelf.png";
 import {MacbookScroll} from "@/components/ui/macbook-scroll.tsx";
 import AboutScreen from "@/components/AboutScreen.tsx";
 import {useEffect, useRef, useState} from "react";

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import ContactForm from "@/components/sections/contact-form.tsx";
 
 const LINKS = [
   {
@@ -21,7 +22,7 @@ const LINKS = [
   },
   {
     label: "Email",
-    href: "mailto:tanishapakki@gmail.com", // ← update
+      href:"mailto:tanisharajeshpakki@gmail.com?subject=Opportunity%20from%20your%20Portfolio&body=Hi%20Tanisha,%0A%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20an%20opportunity.%0A%0ARegards",
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect width="20" height="16" x="2" y="4" rx="2" />
@@ -79,6 +80,8 @@ export default function Contact() {
           Designed & built by Tanisha Pakki · {new Date().getFullYear()}
         </motion.p>
       </motion.div>
+
+        <ContactForm/>
     </section>
   );
 }

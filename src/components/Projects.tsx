@@ -19,11 +19,11 @@ function GithubIcon() {
   );
 }
 
-const TAG_COLORS: Record<Project["tag"], string> = {
-  "AI/ML": "text-violet-400",
-  "Full Stack": "text-amber-400",
-  "Mobile": "text-sky-400",
-  "Open Source": "text-emerald-400",
+const TAG_COLORS = {
+    "AI/ML": "text-[#ebdb89]",
+    "Full Stack": "text-[#e8c778]",
+    "Mobile": "text-[#d7b96d]",
+    "Open Source": "text-[#f0df98]",
 };
 
 interface ExpandedCardProps {
@@ -39,9 +39,14 @@ function ExpandedCard({ project, onClose }: ExpandedCardProps) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl rounded-3xl border border-white/10 bg-zinc-900 p-10 shadow-2xl overflow-y-auto max-h-[85vh]"
+          style={{
+              background:
+                  "linear-gradient(180deg,#4d3043,#35283b)",
+              border:"1px solid rgba(235,219,137,.15)",
+              animation: "fadeScaleIn 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards"
+          }}
+        className="relative w-full max-w-2xl rounded-3xl border border-white/10  p-10 shadow-2xl overflow-y-auto max-h-[85vh]"
         onClick={(e) => e.stopPropagation()}
-        style={{ animation: "fadeScaleIn 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards" }}
       >
         <button
           onClick={onClose}
@@ -73,7 +78,12 @@ function ExpandedCard({ project, onClose }: ExpandedCardProps) {
           {project.tech.map((t) => (
             <span
               key={t}
-              className="text-xs font-mono font-semibold bg-white/5 border border-white/10 text-zinc-300 rounded-full px-3 py-1"
+              style={{
+                  background:"#2b2435",
+                  border:"1px solid rgba(235,219,137,.12)",
+                  color:"#ebdb89",
+              }}
+              className="text-xs font-mono font-semibold  border  text-zinc-300 rounded-full px-3 py-1"
             >
               {t}
             </span>
@@ -87,7 +97,13 @@ function ExpandedCard({ project, onClose }: ExpandedCardProps) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-full bg-white/10 px-5 py-2 text-white text-sm hover:bg-white/20 transition-colors"
+              style={{
+                  background:"#9d5b67",
+                  color:"#f5f1eb",
+
+              }}
+              className="flex items-center gap-2 rounded-full  px-5 py-2 text-white text-sm hover:bg-background:#b56f7d;
+transform:translateY(-2px) transition-colors"
             >
               <GithubIcon /> GitHub
             </a>
@@ -138,10 +154,10 @@ export default function Projects() {
   return (
     <section className="relative min-h-screen bg-transparent py-24 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <h2 className="font-anton text-[clamp(4rem,8vw,7rem)] font-black text-[#f5f1eb] leading-[0.9] mb-2 tracking-[-2px]">
+        <h2 className="font-anton text-[clamp(4rem,8vw,7rem)] font-black text-[#ebdb89] leading-[0.9] mb-2 tracking-[-2px]">
           PROJECTS
         </h2>
-        <p className="text-zinc-400 text-sm uppercase tracking-widest mb-16">
+        <p className="text-[rgba(245,241,235,.72)] text-sm uppercase tracking-widest mb-16">
           Click any card to explore
         </p>
 
@@ -167,10 +183,18 @@ export default function Projects() {
                   tabIndex={0}
                   aria-label={`View ${project.title} details`}
                   onKeyDown={(e) => e.key === "Enter" && openCard(index)}
-                  className="group relative w-full rounded-3xl border border-white/10 bg-zinc-900 overflow-hidden cursor-pointer transition-all duration-300 hover:border-white/25 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
-                  style={{ height: 280 }}
+                  style={{
+                      background:
+                          "linear-gradient(160deg,#4d3043 0%,#3f2b3d 100%)",
+                      border: "1px solid rgba(235,219,137,.15)",
+                      height: 280,
+                  }}
+                  className="group relative w-full rounded-3xl border border-white/10  overflow-hidden cursor-pointer transition-all duration-300 hover:border-white/25 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent" />
+                  <div className="absolute inset-0 " style={{
+                      background:
+                          "linear-gradient(140deg, rgba(235,219,137,.08), transparent 45%)",
+                  }}/>
                   <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                   <div className="relative h-full p-8 flex flex-col justify-between">
@@ -191,7 +215,12 @@ export default function Projects() {
                         {project.tech.slice(0, 3).map((t) => (
                           <span
                             key={t}
-                            className="text-[10px] font-mono font-semibold bg-white/5 border border-white/10 text-zinc-400 rounded-full px-2.5 py-0.5"
+                            style={{
+                                background:"#2b2435",
+                                border:"1px solid rgba(235,219,137,.12)",
+                                color:"#ebdb89",
+                            }}
+                            className="text-[10px] font-mono font-semibold  border rounded-full px-2.5 py-0.5"
                           >
                             {t}
                           </span>
@@ -217,10 +246,12 @@ export default function Projects() {
       {/* Backdrop */}
       <div
         onClick={closeCard}
-        className="fixed inset-0 z-40 bg-black/70 backdrop-blur-xl transition-all duration-500"
+        className="fixed inset-0 z-40 transition-all duration-500"
         style={{
           opacity: activeIndex !== null ? 1 : 0,
           pointerEvents: activeIndex !== null ? "auto" : "none",
+            background:"rgba(35,28,41,.78)",
+            backdropFilter:"blur(18px)"
         }}
         aria-hidden="true"
       />

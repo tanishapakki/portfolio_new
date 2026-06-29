@@ -1,7 +1,7 @@
 import "./App.css";
 import BubbleMenu from "@/components/ui/BubbleMenu";
 import Hero from "./components/Hero";
-import About from "./components/About";
+import About from "./components/sections/About.tsx";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import Contact from "./components/sections/Contact";
@@ -36,7 +36,7 @@ export default function App() {
         <About />
       </section>
 
-      <section id="projects" data-color="#583722" className="min-h-screen">
+      <section id="projects" data-color="#2F2A35" className="min-h-screen">
         <Projects />
       </section>
 

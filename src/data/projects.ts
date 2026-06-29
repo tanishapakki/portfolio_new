@@ -23,13 +23,13 @@ export const PROJECTS: Project[] = [
       "An NLP-powered chatbot providing accessible legal guidance on women's safety laws, IPC sections, and emergency contacts — built to bridge the gap between legal knowledge and those who need it most.",
     detail:
       "Trained a domain-specific intent classifier on Indian legal statutes. Integrated a RAG pipeline to retrieve relevant IPC/POCSO sections dynamically. Built a React + FastAPI frontend with multilingual support and WhatsApp webhook integration for rural reach.",
-    tech: ["Python", "FastAPI", "LangChain", "React", "PostgreSQL"],
-    githubUrl: "https://github.com/tanishapakki", // ← update with real URL
+    tech: ["Python", "FastAPI", "MongoDB", "React Native", "NLP"],
+    githubUrl: "https://github.com/tanishapakki/app-in-law2",
   },
 
     {
-        id: "hrms-platform",
-        title: "HRMS Platform — Print Electronics",
+        id: "quotation-tracker",
+        title: "Quotation Tracker",
         tag: "Full Stack",
         description:
             "End-to-end HR management system with attendance regularization, leave workflows, payroll, and role-based access control — deployed and actively used by 50+ employees.",
