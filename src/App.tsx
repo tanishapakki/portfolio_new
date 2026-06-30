@@ -2,7 +2,7 @@ import "./App.css";
 import BubbleMenu from "@/components/ui/BubbleMenu";
 import Hero from "./components/Hero";
 import About from "./components/sections/About.tsx";
-import Projects from "./components/Projects";
+import Projects from "./components/sections/Projects.tsx";
 import Experience from "./components/Experience";
 import Contact from "./components/sections/Contact";
 import { NAV_ITEMS } from "./data/navigation";

@@ -12,6 +12,7 @@ export interface Project {
   liveUrl?: string;
   /** Relative path or URL to a project screenshot/thumbnail */
   image?: string;
+  video?: string;
 }
 
 export const PROJECTS: Project[] = [

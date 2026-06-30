@@ -27,7 +27,7 @@ const TRACK_PATH =
     "M 200 60 C 320 120, 340 220, 250 320 C 160 420, 100 500, 180 620 C 260 740, 320 820, 200 950";
 // ─── UTILITIES ───────────────────────────────────────────────────────────────
 function getPointAtT(svgEl: SVGPathElement | null,
-    t: number): CarPosition {
+                     t: number): CarPosition {
     if (!svgEl) return { x: 200, y: 60, angle: 0 };
     const len = svgEl.getTotalLength();
     const p1 = svgEl.getPointAtLength(t * len);
@@ -185,88 +185,6 @@ interface HUDProps {
     speed: number;
 }
 
-function HUD({
-                 lap,
-                 progress,
-                 speed,
-             }: HUDProps) {
-    const needleAngle = -135 + (speed / 100) * 270;
-    return (
-        <div className="absolute right-2 top-10 ml-auto w-fit z-50">
-            <div className="bg-black/90 border  rounded-xl p-3 backdrop-blur-md  w-48 font-mono">
-                {/* Header */}
-                <div className="flex items-center justify-between mb-2 pb-2 border-b border-gray-800">
-                    <span className="text-red-500 text-[10px] font-bold tracking-widest">F1 TELEMETRY</span>
-                    <span className="text-[9px] text-gray-600">LIVE</span>
-                </div>
-
-                {/* Lap */}
-                <div className="flex items-center justify-between mb-1">
-                    <span className="text-gray-500 text-[10px]">LAP</span>
-                    <span className="text-white text-sm font-bold">{lap} / 06</span>
-                </div>
-
-                {/* Progress */}
-                <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-500 text-[10px]">CAREER</span>
-                    <span className="text-red-400 text-[10px] font-bold">{Math.round(progress)}%</span>
-                </div>
-                <div className="w-full bg-gray-800 rounded-full h-1 mb-3">
-                    <motion.div
-                        className="bg-red-600 h-1 rounded-full"
-                        style={{ width: `${progress}%` }}
-                    />
-                </div>
-
-                {/* Speedometer */}
-                <div className="flex flex-col items-center">
-                    <span className="text-gray-500 text-[9px] mb-1">SPEED</span>
-                    <svg viewBox="0 0 80 50" width="80" height="50">
-                        {/* Arc bg */}
-                        <path d="M 8 44 A 32 32 0 0 1 72 44" stroke="#1f2937" strokeWidth="6" fill="none" strokeLinecap="round" />
-                        {/* Arc fill */}
-                        <motion.path
-                            d="M 8 44 A 32 32 0 0 1 72 44"
-                            stroke="#E10600"
-                            strokeWidth="6"
-                            fill="none"
-                            strokeLinecap="round"
-                            strokeDasharray="100"
-                            strokeDashoffset={100 - (speed / 100) * 100}
-                        />
-                        {/* Needle */}
-                        <motion.line
-                            x1="40" y1="44"
-                            x2={40 + 26 * Math.cos(((needleAngle - 90) * Math.PI) / 180)}
-                            y2={44 + 26 * Math.sin(((needleAngle - 90) * Math.PI) / 180)}
-                            stroke="#FFD700"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                        />
-                        <circle cx="40" cy="44" r="3" fill="#E10600" />
-                        <text x="40" y="30" textAnchor="middle" fill="white" fontSize="8" fontFamily="monospace">
-                            {Math.round(speed)}
-                        </text>
-                        <text x="40" y="38" textAnchor="middle" fill="#6b7280" fontSize="5" fontFamily="monospace">
-                            km/h
-                        </text>
-                    </svg>
-                </div>
-
-                {/* Status */}
-                <div className="text-center mt-1">
-                    <motion.span
-                        className="text-[9px] font-bold text-green-400"
-                        animate={{ opacity: [1, 0.4, 1] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                        ● RACING
-                    </motion.span>
-                </div>
-            </div>
-        </div>
-    );
-}
 
 // ─── MAIN COMPONENT ──────────────────────────────────────────────────────────
 export default function Experience() {
@@ -377,159 +295,215 @@ export default function Experience() {
     const VIEWBOX_H =1000;
 
     return (
+        <>
+
         <div
             ref={containerRef}
-            className="relative w-full mt-20"
+            className="relative w-full mt-20 hidden lg:block"
             style={{ height: "250vh", background: "transparent" }}
         >
             <div className="sticky top-0 h-screen overflow-hidden">
 
-            <HUD lap={currentLap} progress={hudProgress} speed={speed} />
-            <div className="sticky top-0 w-full h-screen overflow-hidden">
-                {/* Ambient glow */}
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-red-900/10 rounded-full blur-3xl" />
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-red-800/5 rounded-full blur-2xl" />
-                </div>
+                <div className="sticky top-0 w-full h-screen overflow-hidden">
+                    {/* Ambient glow */}
+                    <div className="absolute inset-0 pointer-events-none">
+                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-red-900/10 rounded-full blur-3xl" />
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-64 bg-red-800/5 rounded-full blur-2xl" />
+                    </div>
 
-                {/* Title */}
-                <div className="absolute top-6 left-6 z-10">
+                    {/* Title */}
+                    <div className="absolute top-6 left-6 z-10">
 
-                    <h2 className="font-anton text-white text-6xl md:text-[clamp(4rem,8vw,7rem)] leading-none mt-1 z-0">
-                        EXPERIENCE
-                    </h2>
+                        <h2 className="font-anton text-white text-6xl md:text-[clamp(4rem,8vw,7rem)] leading-none mt-1 z-0">
+                            EXPERIENCE
+                        </h2>
 
-                    <p className="text-zinc-400 text-sm mt-2 uppercase tracking-widest">
-                        Scroll to race forward
-                    </p>
-                </div>
+                        <p className="text-zinc-400 text-sm mt-2 uppercase tracking-widest">
+                            Scroll to race forward
+                        </p>
+                    </div>
 
-                {/* SVG Track */}
-                <motion.svg
-                    viewBox={`${carPos.x - 150} ${carPos.y - 250} 300 500`}
-                    className="absolute inset-0 w-full h-full"
-                >
-                    <defs>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="3" result="blur" />
-                            <feMerge>
-                                <feMergeNode in="blur" />
-                                <feMergeNode in="SourceGraphic" />
-                            </feMerge>
-                        </filter>
-                        <linearGradient id="trackGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stopColor="#E10600" stopOpacity="0.6" />
-                            <stop offset="50%" stopColor="#FF4444" stopOpacity="0.4" />
-                            <stop offset="100%" stopColor="#E10600" stopOpacity="0.8" />
-                        </linearGradient>
-                    </defs>
+                    {/* SVG Track */}
+                    <motion.svg
+                        viewBox={`${carPos.x - 150} ${carPos.y - 250} 300 500`}
+                        className="absolute inset-0 w-full h-full"
+                    >
+                        <defs>
+                            <filter id="glow">
+                                <feGaussianBlur stdDeviation="3" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                            <linearGradient id="trackGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stopColor="#E10600" stopOpacity="0.6" />
+                                <stop offset="50%" stopColor="#FF4444" stopOpacity="0.4" />
+                                <stop offset="100%" stopColor="#E10600" stopOpacity="0.8" />
+                            </linearGradient>
+                        </defs>
 
 
-                    {/* Track surface */}
-                    <path
-                        d={TRACK_PATH}
-                        fill="none"
-                        stroke="#1a1a1a"
-                        strokeWidth="18"
-                        strokeLinecap="round"
-                    />
-                    {/* Track inner line */}
-                    <path
-                        d={TRACK_PATH}
-                        fill="none"
-                        stroke="url(#trackGrad)"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeDasharray="8 4"
-                        opacity="0.5"
-                    />
-                    {/* Hidden path for getPointAtLength */}
-                    <path
-                        ref={pathRef}
-                        d={TRACK_PATH}
-                        fill="none"
-                        stroke="none"
-                    />
+                        {/* Track surface */}
+                        <path
+                            d={TRACK_PATH}
+                            fill="none"
+                            stroke="#1a1a1a"
+                            strokeWidth="18"
+                            strokeLinecap="round"
+                        />
+                        {/* Track inner line */}
+                        <path
+                            d={TRACK_PATH}
+                            fill="none"
+                            stroke="url(#trackGrad)"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeDasharray="8 4"
+                            opacity="0.5"
+                        />
+                        {/* Hidden path for getPointAtLength */}
+                        <path
+                            ref={pathRef}
+                            d={TRACK_PATH}
+                            fill="none"
+                            stroke="none"
+                        />
 
-                    {/* Checkpoint markers */}
-                    {checkpointPositions.map((pos, i) => {
-                        const m = MILESTONES[i];
-                        const isActive = activeCheckpoints.has(i);
+                        {/* Checkpoint markers */}
+                        {checkpointPositions.map((pos, i) => {
+                            const m = MILESTONES[i];
+                            const isActive = activeCheckpoints.has(i);
 
-                        const side = i % 2 === 0 ? "right" : "left";
+                            const side = i % 2 === 0 ? "right" : "left";
 
-                        return (
-                            <g key={i} transform={`translate(${pos.x}, ${pos.y})`}>
-                                <motion.circle
-                                    r={isActive ? 10 : 7}
-                                    fill={isActive ? "#E10600" : "#333"}
-                                    stroke={isActive ? "#FFD700" : "#555"}
-                                    strokeWidth="2"
-                                    filter={isActive ? "url(#glow)" : undefined}
-                                    animate={isActive ? { r: [8, 11, 8] } : {}}
-                                    transition={{ duration: 1.5, repeat: Infinity }}
-                                />
-
-                                <text
-                                    y="4"
-                                    textAnchor="middle"
-                                    fill={isActive ? "#FFD700" : "#888"}
-                                    fontSize="7"
-                                    fontFamily="monospace"
-                                    fontWeight="bold"
-                                >
-                                    {m.lap}
-                                </text>
-
-                                <foreignObject
-                                    x={side === "right" ? 20 : -320}
-                                    y={-80}
-                                    width="290"
-                                    height="200"
-                                    style={{ overflow: "visible" }}
-                                >
-                                    <CheckpointCard
-                                        milestone={m}
-                                        active={isActive}
-                                        side={side === "right" ? "left" : "right"}
+                            return (
+                                <g key={i} transform={`translate(${pos.x}, ${pos.y})`}>
+                                    <motion.circle
+                                        r={isActive ? 10 : 7}
+                                        fill={isActive ? "#E10600" : "#333"}
+                                        stroke={isActive ? "#FFD700" : "#555"}
+                                        strokeWidth="2"
+                                        filter={isActive ? "url(#glow)" : undefined}
+                                        animate={isActive ? { r: [8, 11, 8] } : {}}
+                                        transition={{ duration: 1.5, repeat: Infinity }}
                                     />
-                                </foreignObject>
-                            </g>
-                        );
-                    })}
 
-                    {/* Speed particles */}
-                    {particles.map((p) => (
-                        <SpeedParticle key={p.id} x={p.x} y={p.y} angle={p.angle} />
-                    ))}
+                                    <text
+                                        y="4"
+                                        textAnchor="middle"
+                                        fill={isActive ? "#FFD700" : "#888"}
+                                        fontSize="7"
+                                        fontFamily="monospace"
+                                        fontWeight="bold"
+                                    >
+                                        {m.lap}
+                                    </text>
 
-                    {/* Car */}
-                    <g transform={`translate(${carPos.x}, ${carPos.y})`} filter="url(#glow)">
-                        <F1Car angle={carPos.angle} scrolling={scrolling} />
-                    </g>
-                </motion.svg>
+                                    <foreignObject
+                                        x={side === "right" ? 20 : -320}
+                                        y={-80}
+                                        width="290"
+                                        height="200"
+                                        style={{ overflow: "visible" }}
+                                    >
+                                        <CheckpointCard
+                                            milestone={m}
+                                            active={isActive}
+                                            side={side === "right" ? "left" : "right"}
+                                        />
+                                    </foreignObject>
+                                </g>
+                            );
+                        })}
 
-                {/* Scroll indicator */}
-                <motion.div
-                    className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-                    animate={{ opacity: hudProgress > 5 ? 0 : 1 }}
-                    transition={{ duration: 0.5 }}
-                >
+                        {/* Speed particles */}
+                        {particles.map((p) => (
+                            <SpeedParticle key={p.id} x={p.x} y={p.y} angle={p.angle} />
+                        ))}
+
+                        {/* Car */}
+                        <g transform={`translate(${carPos.x}, ${carPos.y})`} filter="url(#glow)">
+                            <F1Car angle={carPos.angle} scrolling={scrolling} />
+                        </g>
+                    </motion.svg>
+
+                    {/* Scroll indicator */}
                     <motion.div
-                        className="w-5 h-8 border-2 border-gray-600 rounded-full flex items-start justify-center pt-1"
-                        animate={{}}
+                        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                        animate={{ opacity: hudProgress > 5 ? 0 : 1 }}
+                        transition={{ duration: 0.5 }}
                     >
                         <motion.div
-                            className="w-1 h-2 bg-red-500 rounded-full"
-                            animate={{ y: [0, 12, 0] }}
-                            transition={{ duration: 1.5, repeat: Infinity }}
-                        />
+                            className="w-5 h-8 border-2 border-gray-600 rounded-full flex items-start justify-center pt-1"
+                            animate={{}}
+                        >
+                            <motion.div
+                                className="w-1 h-2 bg-red-500 rounded-full"
+                                animate={{ y: [0, 12, 0] }}
+                                transition={{ duration: 1.5, repeat: Infinity }}
+                            />
+                        </motion.div>
+                        <span className="text-gray-600 text-[10px] font-mono tracking-widest">SCROLL</span>
                     </motion.div>
-                    <span className="text-gray-600 text-[10px] font-mono tracking-widest">SCROLL</span>
-                </motion.div>
-            </div>
+                </div>
 
+            </div>
         </div>
+    <div className="lg:hidden px-5 py-10">
+        <h2 className="font-anton text-5xl text-white mb-3">
+            EXPERIENCE
+        </h2>
+
+        <p className="text-zinc-400 text-sm uppercase tracking-widest mb-10">
+            Career Journey
+        </p>
+
+        <div className="relative border-l-2 border-red-600 ml-4">
+            {MILESTONES.map((m) => (
+                <div
+                    key={m.lap}
+                    className="relative mb-10 pl-8"
+                >
+                    {/* checkpoint */}
+                    <div className="absolute -left-[11px] top-2 w-5 h-5 rounded-full bg-red-600 border-4 border-[#0b0b15]" />
+
+                    <div className="rounded-2xl bg-black/70 border border-zinc-800 p-5">
+                    <span className="text-[10px] font-semibold text-red-400">
+                        LAP {m.lap}
+                    </span>
+
+                        <p className="text-xs text-zinc-500 mt-1">
+                            {m.date}
+                        </p>
+
+                        <h3 className="mt-3 text-lg font-bold text-white">
+                            {m.title}
+                        </h3>
+
+                        <p className="text-red-400 text-sm">
+                            {m.company}
+                        </p>
+
+                        <p className="mt-3 text-zinc-400 text-sm leading-7">
+                            {m.description}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 mt-4">
+                            {m.tech.map((tech) => (
+                                <span
+                                    key={tech}
+                                    className="px-2 py-1 rounded bg-zinc-800 text-[10px] text-zinc-300"
+                                >
+                                {tech}
+                            </span>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            ))}
         </div>
+    </div>
+        </>
     );
 }

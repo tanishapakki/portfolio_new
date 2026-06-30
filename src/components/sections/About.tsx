@@ -112,7 +112,7 @@ export default function About(){
                 <MacbookScroll
                     showGradient={false}
                 >
-                    <AboutScreen  screenReady={true} />
+                    <AboutScreen  screenReady={true} resumeUrl={"../../public/RESUME.pdf"} />
 
                 </MacbookScroll>
             </div>

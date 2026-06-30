@@ -1,8 +1,7 @@
 .about-page {
     position: relative;
     min-height: 250vh;
-    /*overflow: visible;*/
-    overflow:hidden;
+    overflow: hidden;
     margin-top: 20%;
 }
 .about-page::before {
@@ -14,7 +13,6 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* Fade top & bottom */
     -webkit-mask-image: linear-gradient(
             to bottom,
             transparent 0%,
@@ -22,7 +20,6 @@
             black 90%,
             transparent 100%
     );
-
     mask-image: linear-gradient(
             to bottom,
             transparent 0%,
@@ -32,204 +29,71 @@
     );
     z-index: 1;
     pointer-events: none;
-
-    /* Initial hidden state */
     opacity: 0;
     filter: blur(25px);
     transform: scale(1.08);
-
     transition:
             opacity 0.9s ease,
             filter 1.2s ease,
             transform 1.2s ease;
 }
 
-/* Page enters */
 .about-page.active::before {
     opacity: 1;
     filter: blur(0);
     transform: scale(1);
 }
 
-/* Page leaves */
 .about-page.exit::before {
     opacity: 0;
     filter: blur(25px);
     transform: scale(1.08);
 }
+
 .sticker {
     position: absolute;
     object-fit: contain;
     user-select: none;
     pointer-events: none;
-    z-index:2;
+    z-index: 2;
 }
 
 /* LEFT */
-
-.camera {
-    width: 90px;
-    top: 20px;
-    left: 30px;
-}
-
-.palette {
-    width: 90px;
-    top: 20px;
-    left: 20rem;
-    rotate: -25deg;
-}
-
-.yarn {
-    width: 85px;
-    top: 145px;
-    left: 15px;
-}
-
-.typewriter {
-    width: 140px;
-    top: 245px;
-    left: 10px;
-}
-
-.tv {
-    width: 170px;
-    top: 480px;
-    left: 10px;
-}
-
-.soda {
-    width: 40px;
-    top: 350px;
-    left: 160px;
-    rotate: -25deg;
-}
-
-.pizza {
-    width: 90px;
-    top: 350px;
-    left: 190px;
-}
-
-.shoes {
-    width: 95px;
-    top: 430px;
-    left: 220px;
-}
-
-.lipgloss {
-    width: 40px;
-    top: 280px;
-    left: 340px;
-    rotate: 10deg;
-}
+.camera   { width: 90px;  top: 20px;  left: 30px; }
+.palette  { width: 90px;  top: 20px;  left: 20rem; rotate: -25deg; }
+.yarn     { width: 85px;  top: 145px; left: 15px; }
+.typewriter { width: 140px; top: 245px; left: 10px; }
+.tv       { width: 170px; top: 480px; left: 10px; }
+.soda     { width: 40px;  top: 350px; left: 160px; rotate: -25deg; }
+.pizza    { width: 90px;  top: 350px; left: 190px; }
+.shoes    { width: 95px;  top: 430px; left: 220px; }
+.lipgloss { width: 40px;  top: 280px; left: 340px; rotate: 10deg; }
 
 /* RIGHT */
-
-
-.gramophone {
-    width: 150px;
-    top: 15px;
-    right: 5px;
-}
-
-.lipliner {
-    width: 80px;
-    top: 250px;
-    right: 160px;
-    rotate: -20deg;
-}
-
-.clapper {
-    width: 70px;
-    top: 180px;
-    right: 40px;
-}
-
-.flowers {
-    width: 100px;
-    top: 450px;
-    right: 170px;
-}
-
-.magazines {
-    width: 150px;
-    top: 280px;
-    right: 10px;
-}
-
-.cap {
-    width: 110px;
-    top: 550px;
-    left: 300px;
-}
-
-.cat {
-    width: 100px;
-    top: 530px;
-    right: 100px;
-}
-
-.coffee {
-    width: 90px;
-    top: 500px;
-    right: 20px;
-}
-
-.coffee-beans{
-    width:60px;
-    top:550px;
-    right:10px;
-}
+.gramophone { width: 150px; top: 15px;  right: 5px; }
+.lipliner   { width: 80px;  top: 250px; right: 160px; rotate: -20deg; }
+.clapper    { width: 70px;  top: 180px; right: 40px; }
+.flowers    { width: 100px; top: 450px; right: 170px; }
+.magazines  { width: 150px; top: 280px; right: 10px; }
+.cap        { width: 110px; top: 550px; left: 300px; }
+.cat        { width: 100px; top: 530px; right: 100px; }
+.coffee     { width: 90px;  top: 500px; right: 20px; }
+.coffee-beans { width: 60px; top: 550px; right: 10px; }
 
 /* LEFT SIDE ADDITIONS */
+.bookshelf  { width: 150px; top: 5px;   left: 150px; }
+.dog        { width: 150px; top: 440px; left: 20px; }
+.popcorn    { width: 75px;  top: 550px; left: 170px; }
+.mascara    { width: 100px; top: 300px; right: 200px; rotate: -10deg; }
+.books      { width: 90px;  top: 0;     right: 400px; }
 
-.bookshelf{
-    width: 150px;
-    top: 5px;
-    left: 150px;
-}
-.dog{
-    width:150px;
-    top:440px;
-    left:20px;
-}
-
-.popcorn{
-    width:75px;
-    top:550px;
-    left:170px;
-}
-
-.mascara{
-    width:100px;
-    top:300px;
-    right:200px;
-    rotate: -10deg;
-}
-
-.books{
-    width:90px;
-    top:0;
-    right:400px;
-}
 /* RIGHT SIDE ADDITIONS */
-
-.music{
-    width:300px;
-    top:-10px;
-    right:150px;
-    transform:rotate(12deg);
-}
-
-
-
+.music      { width: 300px; top: -10px; right: 150px; transform: rotate(12deg); }
 
 /* CENTER CONTENT */
-
 .about-content {
-    position:absolute;
-    z-index:2;
+    position: absolute;
+    z-index: 3;
     inset: 0;
     display: flex;
     top: 300px;
@@ -239,43 +103,18 @@
     height: 10px;
 }
 
-.laptop {
-    top: 40px;
-    width: 500px;
-}
-
-.about-me {
-    position: absolute;
-    font-family:'Providence', sans-serif;
-    font-size:100px;
-    font-weight:bold;
-
-    transform:translateX(-50%);
-
-    color:#8B1E1E;
-}
-
-/*ABOUT SCREEN*/
-
-.about-screen{
+/* ABOUT SCREEN (inside macbook) */
+.about-screen {
     position: absolute;
     inset: 0;
-
-    background-color: #241136; /* purple */
-
-    /* repeated diamond */
-    background-image:  linear-gradient(rgba(36, 17, 54, 0.4), rgba(36, 17, 54, 0.4)),url("../assets/bg.png");
-
+    background-color: #241136;
+    background-image: linear-gradient(rgba(36, 17, 54, 0.4), rgba(36, 17, 54, 0.4)), url("../assets/bg.png");
     background-repeat: repeat;
-
-    /* controls spacing */
     background-size: 80px 80px;
-
-    /* match screenshot */
     opacity: 0.9;
-
     pointer-events: none;
     z-index: 0;
+
 }
 
 .about-container {
@@ -283,15 +122,14 @@
     z-index: 2;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* IMPORTANT */
-
+    align-items: flex-start;
     gap: 10px;
 }
 
 .about-text {
     font-family: "IBM Plex Mono", monospace;
     color: #f5f1eb;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     line-height: 1.65;
     max-width: 700px;
 }
@@ -300,17 +138,18 @@
 }
 .about-heading {
     font-family: "Anton", sans-serif;
-    font-size: clamp(4rem, 8vw, 7rem);
+    font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 900;
     color: #f5f1eb;
     line-height: 0.9;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     letter-spacing: -2px;
 }
-.about-body{
-
+.about-body {
     max-width: 300px;
     flex-direction: row;
+    pointer-events: auto;
+    margin: 0;
 }
 
 .monitor-wrapper {
@@ -318,56 +157,144 @@
     justify-content: center;
     align-items: center;
     top: 30px;
-
 }
 
 .monitor {
     width: 340px;
-    height: 100%;}
+    height: 100%;
+}
 .monitor-screen {
     position: absolute;
     top: 22px;
     left: 30px;
-
     width: 300px;
     height: 240px;
-
     color: #d9ffd2;
     font-family: "VT323", monospace;
     font-size: 0.85rem;
     line-height: 1.1;
-
     overflow: hidden;
 }
-
 .monitor-screen pre {
     margin: 0;
     white-space: pre-wrap;
 }
-/* ── Mobile: hide stickers that overflow on small screens ── */
-@media (max-width: 768px) {
-  /* Keep only a few stickers, hide the rest */
-  .sticker:not(.camera):not(.typewriter):not(.gramophone):not(.flowers):not(.cat) {
-    display: none;
-  }
 
-  .camera { width: 55px; top: 10px; left: 10px; }
-  .typewriter { width: 80px; top: 120px; left: 5px; }
-  .gramophone { width: 85px; top: 10px; right: 5px; }
-  .flowers { width: 70px; bottom: 60px; right: 10px; }
-  .cat { width: 65px; bottom: 10px; right: 10px; }
-
-  .about-content {
-    position: relative;
-    top: auto;
-    inset: auto;
-    padding: 0 1rem;
-    height: auto;
-  }
+/* ── Resume Download Button ── */
+.resume-download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 1.5rem;
+    padding: 10px 20px;
+    background: transparent;
+    color: #D5A25E;
+    border: 1px solid rgba(213, 162, 94, 0.5);
+    border-radius: 8px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    pointer-events: auto;
+}
+.resume-download-btn:hover {
+    background: rgba(213, 162, 94, 0.12);
 }
 
+/* ── MOBILE RESPONSIVE ── */
+
+/* Tablet: 481px–768px */
+@media (max-width: 768px) {
+    .about-page {
+        margin-top: 10%;
+        min-height: 140vh;
+    }
+
+    /* Keep only a handful of tasteful stickers, hide the rest */
+    .sticker { display: none; }
+    .camera    { display: block; width: 55px; top: 12px; left: 10px; }
+    .typewriter{ display: block; width: 80px; top: 80px; left: 5px; }
+    .gramophone{ display: block; width: 80px; top: 12px; right: 5px; }
+    .flowers   { display: block; width: 65px; top: auto; bottom: 80px; right: 10px; }
+    .cat       { display: block; width: 60px; top: auto; bottom: 10px; right: 10px; }
+
+    .about-content {
+        position: relative;
+        top: auto;
+        inset: auto;
+        padding: 2rem 1rem;
+        height: auto;
+        align-items: flex-start;
+    }
+
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .about-body {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .about-heading {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .monitor-wrapper {
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .monitor {
+        width: min(300px, 90vw);
+    }
+
+    .monitor-screen {
+        width: calc(min(300px, 90vw) * 0.88);
+        height: calc(min(300px, 90vw) * 0.7);
+        font-size: 0.75rem;
+    }
+}
+
+/* Phone: ≤480px */
 @media (max-width: 480px) {
-  .sticker {
-    display: none;
-  }
+    .sticker { display: none !important; }
+
+    .about-page {
+        margin-top: 5%;
+        min-height: 120vh;
+    }
+
+    .about-content {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .about-heading {
+        font-size: clamp(2.2rem, 12vw, 3.5rem);
+    }
+
+    .about-text {
+        font-size: 0.72rem;
+    }
+
+    .monitor {
+        width: min(260px, 85vw);
+    }
+
+    .monitor-screen {
+        width: calc(min(260px, 85vw) * 0.88);
+        height: calc(min(260px, 85vw) * 0.7);
+        font-size: 0.68rem;
+    }
+
+    .resume-download-btn {
+        font-size: 0.5rem;
+        padding: 8px 14px;
+    }
 }

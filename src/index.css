@@ -4,41 +4,53 @@
 @import "tailwindcss";
 
 @theme {
-  --font-anton: "Anton", sans-serif;
-  --font-space-grotesk: "Space Grotesk", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+    --font-anton: "Anton", sans-serif;
+    --font-space-grotesk: "Space Grotesk", sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+}
+
+/* ── Site palette (single source of truth — no gradients) ── */
+:root {
+    --color-gold: #D5A25E;
+    --color-gold-soft: #d4b06a;
+    --color-navy: #071742;
+    --color-navy-deep: #072B6B;
+    --color-cream: #F5F1EB;
+    --color-charcoal: #2B2435;
+    --color-ink: #0a0a0f;
+    --color-panel: #161622;
 }
 
 @font-face {
-  font-family: 'Providence';
-  /* format('truetype') is correct — 'ttf' is not a valid format hint */
-  src: url('./assets/fonts/Providence Sans Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+    font-family: 'Providence';
+    /* format('truetype') is correct — 'ttf' is not a valid format hint */
+    src: url('./assets/fonts/Providence Sans Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
 
 /* Global resets */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-space-grotesk), sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+    margin: 0;
+    font-family: var(--font-space-grotesk), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 /* Focus visible — accessibility */
 :focus-visible {
-  outline: 2px solid rgba(212, 176, 106, 0.7);
-  outline-offset: 3px;
+    outline: 2px solid rgba(212, 176, 106, 0.7);
+    outline-offset: 3px;
 }
